@@ -1,12 +1,19 @@
 import csv
 
 with open("sample_cafe_inventory.csv", encoding="utf-8-sig") as file:
-    inventory = csv.reader(file)
+    items = csv.reader(file)
 
-    list = []
+    categories = []
+    parsing_list = []
 
-    for row in inventory:
-        if row and row[0]:
-            list.append(row[0].strip())
 
-    print(list)
+    for item in items:
+        if item and item[0]:
+            # list.append(f"{index}-{item[0].strip()}")
+            parsing_list.append(item[0].strip())
+
+    for index, row in enumerate(parsing_list):
+        if row == "ITEMS":
+            categories.append(parsing_list[index - 1])
+
+    print(categories)
