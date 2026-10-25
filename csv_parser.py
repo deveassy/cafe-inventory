@@ -36,5 +36,3 @@ with open("sample_cafe_inventory.csv", encoding="utf-8-sig") as file:
         if row == "Name" or row == "Total":
             find_header.append(f"{row}-{index}")
     
-
-# print(inventory)
