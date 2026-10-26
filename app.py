@@ -25,17 +25,21 @@ for category in inventory["categories"]:
                 pack_count = st.number_input(
                     f"{item['name']} - Packs",
                     min_value=0,
+                    value=None,
                     step=1,
+                    placeholder="0",
                     key=f"{item['name']}_packs"
                 )
                 loose_count = st.number_input(
                     f"{item['name']} - Loose",
                     min_value=0,
+                    value=None,
                     step=1,
+                    placeholder="0",
                     key=f"{item['name']}_loose"
                 )
 
-                total = pack_count * item['units_per_pack'] + loose_count
+                total = (pack_count or 0) * item['units_per_pack'] + (loose_count or 0)
 
                 st.write(f"Total: {total}")
 
@@ -52,7 +56,9 @@ for category in inventory["categories"]:
                 quantity = st.number_input(
                     item["name"],
                     min_value=0,
+                    value=None,
                     step=1,
+                    placeholder="0",
                     key=item["name"]
                 )
 
