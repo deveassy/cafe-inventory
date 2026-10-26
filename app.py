@@ -1,6 +1,6 @@
 import csv
 import os
-from datetime import date
+from datetime import datetime
 
 import streamlit as st
 from inventory import inventory
@@ -69,7 +69,7 @@ for category in inventory["categories"]:
 if st.button("Save Stock Count"):
     os.makedirs("stock_counts", exist_ok=True)
 
-    file_name = f"stock_counts/{date.today()}.csv"
+    file_name = f"stock_counts/{datetime.now().strftime('%Y-%m-%d_%H%M%S')}.csv"
 
     with open(file_name, "w", newline="", encoding="utf-8") as file:
         fieldnames = [
