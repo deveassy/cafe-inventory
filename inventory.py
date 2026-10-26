@@ -9,26 +9,32 @@ inventory = {
                     "items": [
                         {
                             "name": "8oz cups",
+                            "units_per_pack": 25,
                             "supplier": None,
                         },
                         {
                             "name": "12oz cups",
+                            "units_per_pack": 20,
                             "supplier": None,
                         },
                         {
                             "name": "8oz lids",
+                            "units_per_pack": 100,
                             "supplier": None,
                         },
                         {
                             "name": "12oz lids",
+                            "units_per_pack": 100,
                             "supplier": None,
                         },
                         {
                             "name": "Ice cups",
+                            "units_per_pack": 25,
                             "supplier": None,
                         },
                         {
                             "name": "Ice cup lids",
+                            "units_per_pack": 50,
                             "supplier": None,
                         },
                     ],
