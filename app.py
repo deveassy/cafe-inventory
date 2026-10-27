@@ -93,3 +93,11 @@ if st.button("Save Stock Count"):
         writer.writerows(results)
 
     st.success(f"Stock count saved: {file_name}")
+
+    with open(file_name, "rb") as file:
+        st.download_button(
+            label="Download CSV",
+            data=file,
+            file_name=os.path.basename(file_name),
+            mime="text/csv",
+        )
