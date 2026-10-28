@@ -98,10 +98,12 @@ inventory = {
                         {
                             "name": "Cup Holders",
                             "supplier": None,
+                            "counting_type": "partial",
                         },
                         {
                             "name": "Cup Sleeve",
                             "supplier": None,
+                            "counting_type": "partial",
                         },
                         {
                             "name": "Napkins",
@@ -250,8 +252,19 @@ inventory = {
                     "counting_instruction": None,
                     "items": [
                         {
-                            "name": "Sugar",
+                            "name": "White Sugar",
                             "supplier": None,
+                            "counting_type": "partial",
+                        },
+                        {
+                            "name": "Brown Sugar",
+                            "supplier": None,
+                            "counting_type": "partial",
+                        },
+                        {
+                            "name": "Sweetener",
+                            "supplier": None,
+                            "counting_type": "partial",
                         },
                         {
                             "name": "Honey",
@@ -264,14 +277,17 @@ inventory = {
                         {
                             "name": "Marshmallow",
                             "supplier": None,
+                            "counting_type": "partial",
                         },
                         {
                             "name": "Chocolate Drops",
                             "supplier": None,
+                            "counting_type": "partial",
                         },
                         {
                             "name": "Chocolate Flakes",
                             "supplier": None,
+                            "counting_type": "partial",
                         },
                         {
                             "name": "Matcha Powder",
