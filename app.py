@@ -14,8 +14,34 @@ results = []
 for category in inventory["categories"]:
     st.header(category["name"])
     for subcategory in category["subcategories"]:
-        with st.expander(subcategory["name"]):
-        
+        uncounted_count = 0
+
+        for item in subcategory["items"]:
+            if item.get("units_per_pack"):
+                pack_value = st.session_state.get(f"{item['name']}_packs")
+                loose_value = st.session_state.get(f"{item['name']}_loose")
+
+                if pack_value is None or loose_value is None:
+                    uncounted_count += 1
+
+            else:
+                quantity = st.session_state.get(item['name'])
+
+                if quantity is None:
+                    uncounted_count += 1
+
+        if uncounted_count == 0:
+            expander_label = f"{subcategory['name']} ✅"
+        else:
+            expander_label = f"{subcategory['name']} - ⚠️ {uncounted_count} remaining"
+
+        has_started = uncounted_count < len(subcategory["items"])
+
+        with st.expander(
+            expander_label,
+            expanded=has_started and uncounted_count > 0
+        ):
+    
             if subcategory["counting_instruction"]:
                 st.caption(subcategory["counting_instruction"])
 
@@ -38,6 +64,9 @@ for category in inventory["categories"]:
                         key=f"{item['name']}_loose"
                     )
 
+                    if pack_count is None or loose_count is None:
+                        st.caption("⚠️ Not counted")
+
                     total = (pack_count or 0) * item['units_per_pack'] + (loose_count or 0)
 
                     st.write(f"Total: {total}")
@@ -52,14 +81,17 @@ for category in inventory["categories"]:
                     })
 
                 else:
+                    st.markdown(f"#### {item['name']}")
                     quantity = st.number_input(
-                        item["name"],
+                        "Quantity",
                         min_value=0,
                         value=None,
                         step=1,
                         placeholder="0",
                         key=item["name"]
                     )
+                    if quantity is None:
+                        st.caption("⚠️ Not counted")
 
                     results.append({
                         "category": category["name"],
@@ -69,6 +101,8 @@ for category in inventory["categories"]:
                         "loose_count": '',
                         "total_quantity": quantity,
                     })
+            
+
 
 # save button 
 if st.button("Save Stock Count"):
